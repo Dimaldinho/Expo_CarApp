@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Pressable,View, TextInput, Button, StyleSheet,Text } from 'react-native';
-//import checkLogin_Password from '../../api/loginCheck';
+import checkLogin_Password from '../../../scripts/loginCheck';
 import { router } from 'expo-router';
 
 
@@ -20,12 +20,12 @@ const login = ({ }) => {
     console.log('Login:', userLogin);
     console.log('Password:', userPassword);
 
-    // if(await checkLogin_Password(userLogin,userPassword) == true){
-    //   console.log("Success")
-      
-    //   router.push('../(tabs)/mainScreen');
-      
-    // }
+    if(await checkLogin_Password(userLogin,userPassword) == true){
+      console.log("Success")
+        
+      router.push('../../(tabs)');
+        
+    }
   
   };
   

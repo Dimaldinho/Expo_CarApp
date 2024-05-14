@@ -5,7 +5,7 @@ import { Text, View } from '@/components/Themed';
 import { Redirect } from 'expo-router';
 
 export default function index() {
-    const userLoggedIn = true
+    const userLoggedIn = false
     
     if(!userLoggedIn){
         return <Redirect href="./screens/login_page/login" />;
