@@ -1,27 +1,15 @@
 import { StyleSheet } from 'react-native';
-
+import React, { useEffect } from 'react';
 import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
-
-import { Redirect } from 'expo-router';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { router } from 'expo-router';
 import { getData, setData } from '../scripts/asyncStorage'
+import {userLoggedInOrNot} from '../scripts/checkUserLoggedIn'
 
 export default function index() {
-    setData('userLoggedIn','false')
-    const userLoggedIn =  getData('userLoggedIn').then
-    
-    
-    if(userLoggedIn == false){
-        setData('userLoggedIn','false')
-        
-        return <Redirect href="./screens/login_page/login" />;
-    }else{
-      return <Redirect href="./(tabs)" />;
-    }
-    
-    
+  userLoggedInOrNot();
 
-  
 }
 
 const styles = StyleSheet.create({
