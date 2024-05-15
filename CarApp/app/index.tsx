@@ -1,10 +1,4 @@
 import { StyleSheet } from 'react-native';
-import React, { useEffect } from 'react';
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { router } from 'expo-router';
-import { getData, setData } from '../scripts/asyncStorage'
 import {userLoggedInOrNot} from '../scripts/checkUserLoggedIn'
 
 export default function index() {
