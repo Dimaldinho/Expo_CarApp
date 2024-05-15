@@ -6,7 +6,6 @@ import { router } from 'expo-router';
 export function userLoggedInOrNot() {
   useEffect(() => {
     const fetchData = async () => {
-        await AsyncStorage.setItem('userLoggedIn', 'false');
 
         
         const userLoggedIn = await AsyncStorage.getItem('userLoggedIn');
@@ -14,9 +13,7 @@ export function userLoggedInOrNot() {
         if (userLoggedIn === 'false') {
           router.push('./screens/login_page/login');
         } else {
-          
-          // Redirect to another page if user is logged in
-          // return <Redirect href="./tabs" />;
+          router.push('./(tabs)');
         }
      
       
