@@ -4,6 +4,10 @@ import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
 
 export default function TabOneScreen() {
+  const a = async ()=>{
+    
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Tab One</Text>
