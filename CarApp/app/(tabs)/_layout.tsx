@@ -6,6 +6,8 @@ import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
 import { useClientOnlyValue } from '@/components/useClientOnlyValue';
 import { StyleSheet } from 'react-native';
+import { router } from 'expo-router';
+import { getData, setData } from '../../scripts/asyncStorage'
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
@@ -13,7 +15,12 @@ function TabBarIcon(props: {
 }) {
   return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
 }
-
+function sRedirect(){
+  setData('userLoggedIn', 'false')
+  router.push('/');
+  //router.push('../screens/login_page/login');
+  
+}
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
@@ -44,8 +51,8 @@ export default function TabLayout() {
                 )}
               </Pressable>
             </Link>
-            <Link href="/modal" asChild>
-              <Pressable>
+            
+              <Pressable onPress={sRedirect}>
                 {({ pressed }) => (
                   <FontAwesome
                     name="home"
@@ -55,7 +62,7 @@ export default function TabLayout() {
                   />
                 )}
               </Pressable>
-            </Link>
+           
             </View>
           ),
         }}

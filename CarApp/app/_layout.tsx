@@ -12,7 +12,10 @@ export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
 } from 'expo-router';
-
+export const unstable_settings = {
+  // Ensure any route can link back to `/`
+  initialRouteName: 'index',
+};
 
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -50,6 +53,7 @@ function RootLayoutNav() {
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+        <Stack.Screen name="screens/login_page/login"  options={{ headerShown: false}} />
       </Stack>
     </ThemeProvider>
   );
