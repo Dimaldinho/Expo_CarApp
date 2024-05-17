@@ -3,7 +3,7 @@ import axios from 'axios';
 const checkLogin_Password= async (userLogin, userPassword) => {
   try {
     const response = await axios.get(`http://127.0.0.1:8000/verifyUser?userInput_Login=${userLogin}&userInput_Password=${userPassword}`);
-    console.log(response)                      
+                    
    
     if(response.data == true){
         return true
