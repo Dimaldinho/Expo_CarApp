@@ -7,12 +7,16 @@ const getCarData= async (userLogin) => {
     
       if(response != null){
 
-        console.log(response.data.car_info)
+        //console.log(response.data.car_info)
         
         
-        var a = JSON.parse(response.data.car_info)
-        var data = JSON.stringify(a)
-        setData('carInfo', data)
+        var a = response.data.car_info
+        
+        console.log("getUSersCarData: ")
+        
+        //console.log(a)
+       
+        await setData('carInfo', a)
 
       }
 

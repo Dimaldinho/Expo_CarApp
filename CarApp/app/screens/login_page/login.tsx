@@ -22,7 +22,7 @@ const login = ({ }) => {
 
     if(await checkLogin_Password(userLogin,userPassword) == true){
       console.log("Success")
-      getCarData(userLogin)
+      await getCarData(userLogin)
       setData('userLoggedIn', 'true')
       setData('userLogin', userLogin)
       router.push('../../(tabs)');

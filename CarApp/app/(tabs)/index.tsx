@@ -1,31 +1,30 @@
 import { StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Text, View } from '@/components/Themed';
-import getCarData from '../../scripts/getUsersCarData'
-import { useState } from 'react';
+
+import { useEffect, useState } from 'react';
 
 export default function TabOneScreen() {
-  var [carText, setCarText] = useState('!info')
+  
+  var [carText, setCarText] = useState()
   var [carModelText, setModelText] = useState('!info')
   var [carYearText, setYearText] = useState('!info')
 
     const a = async ()=>{
+     
+      var asd = await AsyncStorage.getItem('carInfo');
+      console.log(asd)
+      if(asd != null){
+      var dsa = JSON.parse(asd)
       
-      const userLogin = await AsyncStorage.getItem('userLogin');
-      
-      const jsonData = await getCarData(userLogin)
-      
-      if(jsonData != null){
-        var ab= JSON.parse(jsonData.car_info)
-        //console.log(jsonData.car_info)
-        
-
-        setCarText(ab.car);
-        setModelText(ab.model);
-        setYearText(ab.year);
+      setCarText(dsa.car);
+      setModelText(dsa.model);
+      setYearText(dsa.year);
       }
+      
+      
     }
-    a()    
+    a()
 
   return (
     <View style={styles.container}>
