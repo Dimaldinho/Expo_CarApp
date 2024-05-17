@@ -9,7 +9,7 @@ export function userLoggedInOrNot() {
         
         const userLoggedIn = await AsyncStorage.getItem('userLoggedIn');
         console.log('User logged in:', userLoggedIn);
-        if (userLoggedIn === 'false') {
+        if (userLoggedIn == 'false' || userLoggedIn == null) {
           router.push('./screens/login_page/login');
         } else {
           router.push('./(tabs)');
