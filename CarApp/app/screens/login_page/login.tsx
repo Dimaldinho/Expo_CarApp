@@ -3,7 +3,7 @@ import { Pressable,View, TextInput, Button, StyleSheet,Text } from 'react-native
 import checkLogin_Password from '../../../scripts/loginCheck';
 import { router } from 'expo-router';
 import { getData, setData } from '../../../scripts/asyncStorage'
-
+import  getCarData  from '../../../scripts/getUsersCarData'
 const login = ({ }) => {
   const [userLogin, setEmail] = useState('');
   const [userPassword, setPassword] = useState('');
@@ -22,7 +22,7 @@ const login = ({ }) => {
 
     if(await checkLogin_Password(userLogin,userPassword) == true){
       console.log("Success")
-      
+      getCarData(userLogin)
       setData('userLoggedIn', 'true')
       setData('userLogin', userLogin)
       router.push('../../(tabs)');
