@@ -8,6 +8,7 @@ import { useClientOnlyValue } from '@/components/useClientOnlyValue';
 import { StyleSheet } from 'react-native';
 import { router } from 'expo-router';
 import { getData, setData } from '../../scripts/asyncStorage'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
@@ -16,7 +17,7 @@ function TabBarIcon(props: {
   return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
 }
 function sRedirect(){
-  setData('userLoggedIn', 'false')
+  AsyncStorage.clear()
   router.push('/');
   //router.push('../screens/login_page/login');
   
