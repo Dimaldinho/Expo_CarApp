@@ -1,16 +1,18 @@
 import axios from 'axios';
+import { getData, setData } from '../scripts/asyncStorage'
 
 const getCarData= async (userLogin) => {
   try {
-    const response = await axios.get(`http://127.0.0.1:8000/verifyUser?user_Login=${userLogin}`);
-    console.log(response)                      
-   
-    if(response.data == true){
-        return true
-    }
-    console.log("Error")
-    return false
+    const response = await axios.get(`http://127.0.0.1:8000/carInfo?userLogin=${userLogin}`);
     
+      
+      if(response != null){
+        console.log(response.data.car_info) 
+        
+
+        
+      }
+    return response.data                 
     
     
     
@@ -21,4 +23,4 @@ const getCarData= async (userLogin) => {
   }
 };
 
-export default checkLogin_Password;
+export default getCarData;
