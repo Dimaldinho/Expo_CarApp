@@ -5,26 +5,13 @@ const getCarData= async (userLogin) => {
   try {
     const response = await axios.get(`http://127.0.0.1:8000/carInfo?userLogin=${userLogin}`);
     
-      if(response != null){
+      if(response.data != null){
+        
+        await setData('carInfo', response.data.car_info)
 
-        //console.log(response.data.car_info)
-        
-        
-        var a = response.data.car_info
-        
-        console.log("getUSersCarData: ")
-        
-        //console.log(a)
-       
-        await setData('carInfo', a)
+      }else return null
 
-      }
 
-                    
-    
-    
-    
-    
   } catch (error) {
     console.error('Error loging user:', error);
     throw error;
