@@ -17,17 +17,20 @@ export default function TabOneScreen() {
      
       var carInfoFromDB = await AsyncStorage.getItem('carInfo');
       var user = await AsyncStorage.getItem('userLogin')
-      if (user != null){setUserLogin(user)}
+      if (user != null){
+        setUserLogin(user)
+      }
       
       console.log("carInfoFromDB: " + carInfoFromDB)
+
       if(carInfoFromDB != null){
-      var dsa = JSON.parse(carInfoFromDB)
+        var dsa = JSON.parse(carInfoFromDB)
       
-      setCarText(dsa.car);
-      setModelText(dsa.model);
-      setYearText(dsa.year);
+        setCarText(dsa.car);
+        setModelText(dsa.model);
+        setYearText(dsa.year);
       }else{
-       carInfoInDB(false)
+        carInfoInDB(false)
       }
       
     }
