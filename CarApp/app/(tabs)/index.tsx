@@ -1,20 +1,24 @@
 import { Pressable, StyleSheet, TextInput } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Text, View } from '@/components/Themed';
-
 import { useEffect, useState } from 'react';
+import setCarData from '../../scripts/setNewCarInfo'
 
 export default function TabOneScreen() {
   
   var [carText, setCarText] = useState('!info')
   var [carModelText, setModelText] = useState('!info')
   var [carYearText, setYearText] = useState('!info')
-  
+  var [userLogin, setUserLogin] = useState('')
+
   var [condition, carInfoInDB] = useState(true)
   useEffect(() => {
     const showCarInfo_Input = async ()=>{
      
       var carInfoFromDB = await AsyncStorage.getItem('carInfo');
+      var user = await AsyncStorage.getItem('userLogin')
+      if (user != null){setUserLogin(user)}
+      
       console.log("carInfoFromDB: " + carInfoFromDB)
       if(carInfoFromDB != null){
       var dsa = JSON.parse(carInfoFromDB)
@@ -33,11 +37,15 @@ export default function TabOneScreen() {
     const newCarDataToDB = async () => {
       const carData = {
         car: carText,
-        model: carModelText,
         year: carYearText,
+        model: carModelText,
+        
       };
   
-      console.log("JSON.stringify(carData): " + JSON.stringify(carData)); // Here you can replace this with your actual data saving logic
+      console.log("JSON.stringify(carData): " + JSON.stringify(carData));
+      var data = JSON.stringify(carData)
+      console.log(typeof(data))
+      setCarData(userLogin,data)
     };
 
 
