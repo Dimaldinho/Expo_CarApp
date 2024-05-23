@@ -54,6 +54,7 @@ function RootLayoutNav() {
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
         <Stack.Screen name="screens/login_page/login"  options={{ headerShown: false}} />
+        <Stack.Screen name="carRepairInfoInput"  options={{ headerShown: true}} />
       </Stack>
     </ThemeProvider>
   );
