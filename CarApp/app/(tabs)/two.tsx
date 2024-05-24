@@ -7,16 +7,23 @@ import getCarRepairData from '../../scripts/getRepairInfo'
 
 import React, { useEffect, useState } from "react";
 
-   
+
    
 export default function TabTwoScreen() {
+  var [condition, setCond] = useState(false)
   const [data, setData] = useState([])
   const [refresh, setRefresh] = useState(false); // State to trigger useEffect
   
   const showAll = async ()=>{
       const data = await getCarRepairData()
-      console.log(data)
-      setData(data);
+      if(!data){
+        setCond(false)
+      }else{
+        setCond(true)
+        console.log(data)
+        setData(data);
+      }
+      
       
   }
   const handlePress = () => {
@@ -32,23 +39,53 @@ export default function TabTwoScreen() {
   }, [refresh]);
 
   return (
-    <View style={styles.container}>
-      <ScrollView contentContainerStyle={styles.container}>
-        {data.map((item) => (
-          <View key={item.id} style={styles.item}>
-            <Text style={styles.itemText}>{item.info} - {item.price}$</Text>
-            <Text style={styles.itemText}>{item.date}</Text>
-            
-          </View>
-          
-        ))}
+    <div>
+      {condition ?(
         
-      </ScrollView>
+           <ScrollView contentContainerStyle={styles.container}>
+             {data.map((item) => (
+               <View key={item.id} style={styles.item}>
+                 <Text style={styles.itemText}>{item.info} - {item.price}$</Text>
+                <Text style={styles.itemText}>{item.date}</Text>
+               </View>
+        
+            ))}
+          </ScrollView>
+          
+          
+      ):(
+        <Text>NO DATA</Text>
+      )
+
+      }
       <Pressable onPress={handlePress} style={styles.button}>
-              <Text>Add</Text>
+                  <Text>Add</Text>
+                  
+            </Pressable>
+        
+    </div>
+
+
+
+
+
+
+
+
+    // <View style={styles.container}>
+    //   <ScrollView contentContainerStyle={styles.container}>
+    //     {data.map((item) => (
+    //       <View key={item.id} style={styles.item}>
+    //         <Text style={styles.itemText}>{item.info} - {item.price}$</Text>
+    //         <Text style={styles.itemText}>{item.date}</Text>
+    //       </View>
+    //     ))}
+    //   </ScrollView>
+    //   <Pressable onPress={handlePress} style={styles.button}>
+    //           <Text>Add</Text>
               
-        </Pressable>
-    </View>
+    //     </Pressable>
+    // </View>
 
 
 
