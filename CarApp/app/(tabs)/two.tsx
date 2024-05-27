@@ -42,9 +42,9 @@ export default function TabTwoScreen() {
     <div>
       {condition ?(
         
-           <ScrollView contentContainerStyle={styles.container}>
+           <ScrollView >
              {data.map((item) => (
-               <View key={item.id} style={styles.item}>
+               <View key={item} style={styles.item}>
                  <Text style={styles.itemText}>{item.info} - {item.price}$</Text>
                 <Text style={styles.itemText}>{item.date}</Text>
                </View>
